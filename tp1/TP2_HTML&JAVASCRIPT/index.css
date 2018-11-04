@@ -1,0 +1,28 @@
+
+
+body{
+	background-color:gray;
+}
+ h1{
+	text-align:center;
+}
+
+form{
+	border: 1px solid black;
+	width:650px;
+	height:450px;
+	margin:auto;
+	background-color:white;
+}
+
+#div1{
+	border: 1px solid black;
+	padding:5px;
+	background-color:pink;
+	width:620px;
+	height:40px;
+	margin:auto;
+	
+		margin-top:200px;
+}
+
