@@ -1,33 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP2</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
+      <head>
+           <link rel="stylesheet" href="index.css" /> 
+              <title>TP2</title>
+              <script src="formulaire.js">
+        </script>
+        </head>
         
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
-    </head>
-    <body>        
-        <h1>tp2</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
-</html>
+             <body>
+            
+            
+           
+                 <h1> Saisi fiche d'une personne</h1> 
+  
+                         <form>
+                                <table>
+                                   <tr>
+                                     <td> <label  >NOM</label> </td>
+                                      <td><input type="text"   id ="champ"  placeholder="ex:NDAO"   min="5" max="20"  /> </td>
+                                   </tr>
+                                   <tr>
+                                    <td>  <label  >PRENOM</label> </td>
+                                    <td>  <input type="text"   id ="champ"  placeholder="ex:Elhadji"   min="5" max="20"  /> </td>
+                                    </tr>
+                                    
+                                 <tr>
+                                       <td> <label >DATE DE NAISSANCE</label></td>
+                                         <td><input type="date"     /> </td>
+                                        
+                                        </tr>
+                                   
+                                    
+                                          <tr>
+                                         <td><label >ADRESSE</label> </td>
+                                         <td> <input type="adresse"   min="5" max="50" /> </td>
+                                
+                                         </tr>
+                                      <tr>
+                                     <td> <label for="email">EMAIL</label> </td>
+                                     <td> <input type="email"     min="5" max="30"  /> </td>
+                                
+                                        </tr>
+                                      
+                                        
+                                   
+                                       <td></td>
+                                           <td> <input type="button" value="Valider" onclick="validation()" /> </td>
+                                           
+                                           </tr>
+                                           
+                       
+       
+                                           </table>
+                                           <div id="div1"> 
+                                           <p id="error" >  </p>
+                                             </div>
+                                             <div>
+
+                                            
+                                       
+                                             
+                                             
+                                            </form>
+                                            
+                                            
+                                            
+                                       
+                                           
+                                           
+
+                                
+                                </body>
+                                </html>
