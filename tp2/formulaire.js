@@ -1,64 +1,26 @@
- 
- 
- 
- 
- function validation(){
-    var x = document.getElementById("champ").value.length;
-if( x> 0 && x<5 ) {
-document.getElementById("error").innerHTML="Les champs doivent contenir au mois 5 caracteres";
-}
-else if(x==0){
-   document.getElementById("error").innerHTML="La saisi du champs nom est oblgatoire";
+function validation(){
+    var isError = false;
+    var divs = document.querySelectorAll('input.test');
 
-}
-else {
-   document.getElementById("div1").style.backgroundColor="green";
-document.getElementById("error").innerHTML="Bienvenue:"  + document.getElementById("champ").value;
+[].forEach.call(divs, function(item) {
+ // do whatever
+ if(item.value.length == 0){
+       document.getElementById("error").innerHTML="La saisi des champs   est oblgatoire";
+       isError = true;
 
-       
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   }
+   else if (item.value.length <5) {
+       document.getElementById("error").innerHTML="Les champs doivent contenir au mois 5 caracteres";
+       isError = true;
+   }
+   
+   
+   
+   
+});
+if(isError == false){
+       document.getElementById("div1").style.backgroundColor="green";
+document.getElementById("error").innerHTML="Bienvenue:"  + ""+ document.getElementById("nom").value;
+   }
 
 }
