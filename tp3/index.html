@@ -4,6 +4,24 @@
      <head>
      <title>Bootstrap</title>
      <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="/resources/demos/style.css">
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+     <script>
+     $( function() {
+       $( "#datepicker" ).datepicker();
+     } );
+     </script>
+
+
+
+
+
+
+
      
      
      <style>
@@ -86,12 +104,13 @@
                <span aria-hidden="true">&times;</span>
              </button>
            </div>
+            
            <div class="modal-body">
-             <p>Corps de la modal à modifier après validation du formulaire</p>
-             <a class="maps" href="http://maps.google.com/maps?q=Paris" >
-             <img  src="maps.png" alt="google maps" />
-            </a>
-           </div> 
+            <p></p>
+            <a class="maps" href="http://maps.google.com/maps?q=Paris" >
+            <img  src="map.png" alt="google maps" />
+           </a>
+          </div> 
            <div class="modal-footer">
              <button type="button" class="btn btn-primary">Save changes</button>
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -99,7 +118,7 @@
          </div>
        </div>
      </div> 
-     
+     <div id="datepicker"></div>
      </body> 
      </html>
 
