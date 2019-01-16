@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IDE CodinGame</title><link rel="shortcut icon" href="https://www.codingame.com/evaluate/favicon.ico"><link href="IDE%20CodinGame_fichiers/css_002.css" rel="stylesheet"><link href="IDE%20CodinGame_fichiers/css.css" rel="stylesheet"><noscript><link href="index.css" rel="stylesheet"></noscript><script type="text/javascript">var isSupported="undefined"!=typeof Map&&"undefined"!=typeof Set&&"undefined"!=typeof Intl;isSupported||(window.location.href="old-browser.html")</script><link href="IDE%20CodinGame_fichiers/308.css" rel="stylesheet"><link href="IDE%20CodinGame_fichiers/main.css" rel="stylesheet"><script charset="utf-8" src="IDE%20CodinGame_fichiers/309.js"></script><script charset="utf-8" src="IDE%20CodinGame_fichiers/307.js"></script><style data-jss="" data-meta="InjectIntl(Fn), Themed, Static">
+.c01101 {
+  min-width: 650px;
+  max-width: calc(100vw - 100px);
+}
+@media (max-width: 750px) {
+  .c01101 {
+    min-width: 0;
+  }
+}
+.c01102 {
+  display: flex;
+  padding: 20px;
+}
+.c01103 {
+  flex: 1;
+  color: white;
+  height: 50px;
+  margin: 20px;
+  font-size: 18px;
+  transition: background 0.2s;
+  font-weight: 600;
+  background-color: #7e8082;
+}
+.c01103:hover {
+  background-color: #aaaaaa;
+}
+.c01103:disabled {
+  visibility: hidden;
+}
+</style><style data-jss="" data-meta="Component, Unthemed, Static">
+.c0166 {
+  flex: 1;
+  display: flex;
+  padding: 0 20px;
+}
+.c0167 {
+  margin-right: 15px;
+}
+.c0168 {
+  font-size: 17px;
+  font-weight: 700;
+}
+</style><style data-jss="" data-meta="Component, Themed, Static">
+.c0165 {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+</style><style data-jss="" data-meta="InjectIntl(Component), Themed, Static">
+.c0169 {
+  height: 50px;
+  display: flex;
+  padding: 0 20px;
+  font-size: 15px;
+  align-items: center;
+}
+.c0170 {
+  height: 24px;
+  transition: fill 0.2s;
+  margin-right: 10px;
+}
+.c0171 path {
+  fill: #ee3737;
+  animation: QuestionTimer-blink 2s 1;
+}
+.c0172 {
+  color: #f2bb13;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  transition: color 0.2s;
+  align-items: center;
+  margin-left: 4px;
+  font-weight: 600;
+}
+.c0173 {
+  color: #ee3737;
+  animation: QuestionTimer-blink 2s 1;
+  font-weight: 900;
+}
+.c0174 {
+  margin-left: 7px;
+  margin-bottom: 2px;
+}
+.c0175 {
+  transform: rotateZ(180deg);
+  margin-bottom: 1px;
+}
+@-moz-keyframes QuestionTimer-blink {
+  0% {
+    fill: #f2bb13;
+    color: #f2bb13;
+  }
+  20% {
+    fill: #ee3737;
+    color: #ee3737;
+  }
+  40% {
+    fill: #f2bb13;
+    color: #f2bb13;
+  }
+  60% {
+    fill: #ee3737;
+    color: #ee3737;
+  }
+  80% {
+    fill: #f2bb13;
+    color: #f2bb13;
+  }
+  100% {
+    fill: #ee3737;
+    color: #ee3737;
+  }
+}
+</style><style data-jss="" data-meta="t, Themed, Static">
+.c0162 {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+  padding-right: 18px;
+  border-bottom: 1px solid #e3e3e3;
+  background-color: white;
+}
+.c0163 {
+  flex: 1;
+}
+.c0164 {
+  border-left: 1px solid #e3e3e3;
+}
+</style><style data-jss="" data-meta="InjectIntl(t), Themed, Static">
+.c0176 {
+  margin: 60px;
+  margin-top: 58px;
+  -moz-user-select: none;
+}
+.c0176 code {
+  border: 1px solid #f2bb13;
+  padding: 3px;
+}
+.c0176 pre {
+  line-height: 1;
+}
+.c0176 pre code {
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.c0177 {
+  color: white;
+  width: 320px;
+  height: 50px;
+  border: none;
+  padding: 0 20px;
+  display: flex;
+  font-size: 14px;
+  transition: background-color 200ms;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  background-color: #7e8082;
+}
+.c0177:hover {
+  border: none;
+}
+.c0177:not(:disabled):hover {
+  background-color: #aaaaaa;
+}
+.c0177:disabled {
+  cursor: auto;
+  opacity: 0.5;
+  background-color: #d3d3d3;
+}
+</style><style data-jss="" data-meta="Component, Themed, Static">
+.c0159 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #e3e3e3;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  background-color: white;
+}
+.c0160 {
+  border-bottom: 1px solid #e3e3e3;
+}
+.c0161 {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+</style><style data-jss="" data-meta="n, Unthemed, Static">
+.c01129 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  font-weight: 400;
+  justify-content: center;
+}
+</style><style data-jss="" data-meta="Component, Themed, Static">
+.c01127 {
+  height: 50px;
+  outline: 1px solid #e3e3e3;
+  padding: 0 15px;
+}
+.c01127:disabled {
+  cursor: auto;
+}
+.c01127:disabled .c01128 path {
+  fill: #d3d3d3;
+}
+.c01127:hover:not(:disabled) .c01128 path {
+  fill: #ffd200;
+}
+.c01128 path {
+  fill: #f2bb13;
+  transition: fill 0.2s;
+}
+</style><style data-jss="" data-meta="InjectIntl(Component), Themed, Static">
+.c01125 {
+  display: flex;
+}
+.c01126 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+</style><style data-jss="" data-meta="InjectIntl(Ga), Themed, Static">
+.c0188 {
+  color: white;
+  height: 50px;
+  padding: 10px;
+  position: relative;
+  transition: opacity 0.2s, background 0.2s;
+  font-weight: 700;
+  background-color: #f2bb13;
+}
+.c0188:hover {
+  background-color: #ffd200;
+}
+.c0188:disabled {
+  cursor: auto;
+  background-color: #d3d3d3;
+}
+.c0188 img {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+}
+.c0189 {
+  flex: 1;
+}
+.c0190 {
+  left: 10px;
+}
+.c0191 {
+  right: 10px;
+}
+.c0192 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  margin: auto;
+  position: absolute;
+}
+.c0193 {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.c0194 {
+  display: inline-block;
+  vertical-align: top;
+}
+</style><style data-jss="" data-meta="InjectIntl(t), Themed, Static">
+.c0195 {
+  width: 650px;
+  max-width: 90vw;
+}
+.c0196 {
+  color: #20252a;
+  padding: 10px 40px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 300;
+}
+.c0197 {
+  display: flex;
+  padding: 20px;
+}
+.c0198 {
+  flex: 1;
+  color: white;
+  height: 50px;
+  margin: 20px;
+  font-size: 18px;
+  transition: opacity 0.2s;
+  font-weight: 600;
+  background-color: #f2bb13;
+}
+.c0198:hover {
+  background-color: #ffd200;
+}
+.c0199 {
+  background-color: #7e8082;
+}
+.c0199:hover {
+  background-color: #aaaaaa;
+}
+.c01100 {
+  margin: 0;
+}
+</style><style data-jss="" data-meta="InjectIntl(Component), Themed, Static">
+.c01122 {
+  padding: 17px 20px;
+}
+.c01123 {
+  color: red;
+  margin: 0;
+  font-size: 16px;
+  font-family: Inconsolata, consolas, monospace;
+}
+.c01124 {
+  cursor: pointer;
+  text-decoration: underline;
+}
+</style><style data-jss="" data-meta="InjectIntl(Component), Themed, Static">
+.c01130 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+</style><style data-jss="" data-meta="Component, Themed, Static">
+.c01135 {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+  font-size: 0;
+  background-color: white;
+}
+.c01135 path {
+  transition: fill 0.2s;
+}
+.c01135:hover path {
+  fill: #20252a !important;
+}
+</style><style data-jss="" data-meta="InjectIntl(Component), Themed, Static">
+.c01131 {
+  color: white;
+  height: 50px;
+  padding: 10px;
+  position: relative;
+  transition: opacity 0.2s, background 0.2s;
+  font-weight: 700;
+  background-color: #2fb994;
+}
+.c01131:hover {
+  background-color: #30caa0;
+}
+.c01131:disabled {
+  cursor: auto;
+  background-color: #d3d3d3;
+}
+.c01132 {
+  top: 0;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  transform-origin: 50% 50%;
+}
+.c01133 {
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+}
+.c01134 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  margin: auto;
+  position: absolute;
+}
+</style><style data-jss="" data-meta="ks, Unthemed, Static">
+.c0178 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+}
+.c0179 {
+  height: 10px;
+  position: relative;
+  margin-top: -10px;
+  pointer-events: none;
+}
+.c0180 {
+  width: 10px;
+  position: relative;
+  margin-left: -10px;
+  pointer-events: none;
+}
+.c0181 {
+  top: 3px;
+  left: 50%;
+  width: 20px;
+  bottom: 3px;
+  position: absolute;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.c0182 {
+  top: 50%;
+  left: 3px;
+  right: 3px;
+  height: 20px;
+  position: absolute;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.c0183 {
+  flex: 1;
+  position: relative;
+}
+</style><style data-jss="" data-meta="WithTheme(t), Unthemed, Static">
+.c01117 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+}
+.c01118 {
+  flex: 1;
+  position: relative;
+  margin-bottom: 10px;
+}
+.c01119 {
+  height: 50px;
+  display: flex;
+}
+.c01120 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.c01121 {
+  flex: 1;
+}
+</style><style data-jss="" data-meta="InjectIntl(i), Unthemed, Static">
+.c0151 {
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  position: absolute;
+  min-width: 1000px;
+  min-height: 600px;
+}
+.c0151.c0152 {
+  left: 80px;
+}
+.c0153 {
+  top: 0;
+  left: 0;
+  width: 50px;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+}
+.c0154 {
+  margin: 0;
+  font-size: 20px;
+  text-align: left;
+}
+.c0155-enter {
+  opacity: 0;
+}
+.c0155-enter.c0155-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out 100ms;
+}
+.c0155-exit {
+  opacity: 1;
+}
+.c0155-exit.c0155-exit-active {
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+</style><style data-jss="" data-meta="Component, Unthemed, Static">
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  color: #333;
+  margin: 0;
+  font-family: Open Sans, Lato, sans-serif;
+  font-weight: 300;
+  background-color: #f9f9f9;
+}
+a {
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  background: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  font: inherit;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: #e3e3e3;
+}
+*::-webkit-scrollbar-thumb {
+  background: #7f8183;
+}
+</style><style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_text-input-ios {position: absolute !important;top: -100000px !important;left: -100000px !important;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style>.ace_snippet-marker {    -moz-box-sizing: border-box;    box-sizing: border-box;    background: rgba(194, 193, 208, 0.09);    border: 1px dotted rgba(211, 208, 235, 0.62);    position: absolute;}</style><style>.ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {    background-color: #CAD6FA;    z-index: 1;}.ace_editor.ace_autocomplete .ace_line-hover {    border: 1px solid #abbffe;    margin-top: -1px;    background: rgba(233,233,253,0.4);}.ace_editor.ace_autocomplete .ace_line-hover {    position: absolute;    z-index: 2;}.ace_editor.ace_autocomplete .ace_scroller {   background: none;   border: none;   box-shadow: none;}.ace_rightAlignedText {    color: gray;    display: inline-block;    position: absolute;    right: 4px;    text-align: right;    z-index: -1;}.ace_editor.ace_autocomplete .ace_completion-highlight{    color: #000;    text-shadow: 0 0 0.01em;}.ace_editor.ace_autocomplete {    width: 280px;    z-index: 200000;    background: #fbfbfb;    color: #444;    border: 1px lightgray solid;    position: fixed;    box-shadow: 2px 3px 5px rgba(0,0,0,.2);    line-height: 1.4;}</style><style id="ace_searchbox">.ace_search {background-color: #ddd;color: #666;border: 1px solid #cbcbcb;border-top: 0 none;overflow: hidden;margin: 0;padding: 4px 6px 0 4px;position: absolute;top: 0;z-index: 99;white-space: normal;}.ace_search.left {border-left: 0 none;border-radius: 0px 0px 5px 0px;left: 0;}.ace_search.right {border-radius: 0px 0px 0px 5px;border-right: 0 none;right: 0;}.ace_search_form, .ace_replace_form {margin: 0 20px 4px 0;overflow: hidden;line-height: 1.9;}.ace_replace_form {margin-right: 0;}.ace_search_form.ace_nomatch {outline: 1px solid red;}.ace_search_field {border-radius: 3px 0 0 3px;background-color: white;color: black;border: 1px solid #cbcbcb;border-right: 0 none;box-sizing: border-box!important;outline: 0;padding: 0;font-size: inherit;margin: 0;line-height: inherit;padding: 0 6px;min-width: 17em;vertical-align: top;}.ace_searchbtn {border: 1px solid #cbcbcb;line-height: inherit;display: inline-block;padding: 0 6px;background: #fff;border-right: 0 none;border-left: 1px solid #dcdcdc;cursor: pointer;margin: 0;position: relative;box-sizing: content-box!important;color: #666;}.ace_searchbtn:last-child {border-radius: 0 3px 3px 0;border-right: 1px solid #cbcbcb;}.ace_searchbtn:disabled {background: none;cursor: default;}.ace_searchbtn:hover {background-color: #eef1f6;}.ace_searchbtn.prev, .ace_searchbtn.next {padding: 0px 0.7em}.ace_searchbtn.prev:after, .ace_searchbtn.next:after {content: "";border: solid 2px #888;width: 0.5em;height: 0.5em;border-width:  2px 0 0 2px;display:inline-block;transform: rotate(-45deg);}.ace_searchbtn.next:after {border-width: 0 2px 2px 0 ;}.ace_searchbtn_close {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAcCAYAAABRVo5BAAAAZ0lEQVR42u2SUQrAMAhDvazn8OjZBilCkYVVxiis8H4CT0VrAJb4WHT3C5xU2a2IQZXJjiQIRMdkEoJ5Q2yMqpfDIo+XY4k6h+YXOyKqTIj5REaxloNAd0xiKmAtsTHqW8sR2W5f7gCu5nWFUpVjZwAAAABJRU5ErkJggg==) no-repeat 50% 0;border-radius: 50%;border: 0 none;color: #656565;cursor: pointer;font: 16px/16px Arial;padding: 0;height: 14px;width: 14px;top: 9px;right: 7px;position: absolute;}.ace_searchbtn_close:hover {background-color: #656565;background-position: 50% 100%;color: white;}.ace_button {margin-left: 2px;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none;-ms-user-select: none;user-select: none;overflow: hidden;opacity: 0.7;border: 1px solid rgba(100,100,100,0.23);padding: 1px;box-sizing:    border-box!important;color: black;}.ace_button:hover {background-color: #eee;opacity:1;}.ace_button:active {background-color: #ddd;}.ace_button.checked {border-color: #3399ff;opacity:1;}.ace_search_options{margin-bottom: 3px;text-align: right;-webkit-user-select: none;-moz-user-select: none;-o-user-select: none;-ms-user-select: none;user-select: none;clear: both;}.ace_search_counter {float: left;font-family: arial;padding: 0 8px;}
+/*# sourceURL=ace/css/ace_searchbox */</style><style id="ace-codingame-work">
+    .ace-codingame-work .ace_gutter {
+      background: white;
+      border-right: 1px solid #e3e3e3;
+      color: #333;
+    }
+    .ace-codingame-work .ace_print-margin {
+      width: 1px;
+      background: #ebebeb;
+    }
+    .ace-codingame-work {
+      background-color: #FFFFFF;
+      color: black;
+      z-index: 0;
+      font-family: Inconsolata, consolas, monospace;
+    }
+    .ace-codingame-work .ace_fold {
+      background-color: rgb(60, 76, 114);
+    }
+    .ace-codingame-work .ace_cursor {
+      color: black;
+    }
+    .ace-codingame-work .ace_storage,
+    .ace-codingame-work .ace_keyword,
+    .ace-codingame-work .ace_variable {
+      color: rgb(127, 0, 85);
+    }
+    .ace-codingame-work .ace_constant.ace_buildin {
+      color: rgb(88, 72, 246);
+    }
+    .ace-codingame-work .ace_constant.ace_library {
+      color: rgb(6, 150, 14);
+    }
+    .ace-codingame-work .ace_function {
+      color: rgb(60, 76, 114);
+    }
+    .ace-codingame-work .ace_string {
+      color: rgb(42, 0, 255);
+    }
+    .ace-codingame-work .ace_comment {
+      color: rgb(113, 150, 130);
+    }
+    .ace-codingame-work .ace_comment.ace_doc {
+      color: rgb(63, 95, 191);
+    }
+    .ace-codingame-work .ace_comment.ace_doc.ace_tag {
+      color: rgb(127, 159, 191);
+    }
+    .ace-codingame-work .ace_constant.ace_numeric {
+      color: darkblue;
+    }
+    .ace-codingame-work .ace_tag {
+      color: rgb(25, 118, 116);
+    }
+    .ace-codingame-work .ace_type {
+      color: rgb(127, 0, 127);
+    }
+    .ace-codingame-work .ace_xml-pe {
+      color: rgb(104, 104, 91);
+    }
+    .ace-codingame-work .ace_marker-layer .ace_selection {
+      background: rgb(181, 213, 255);
+    }
+    .ace-codingame-work .ace_marker-layer .ace_bracket {
+      margin: -1px 0 0 -1px;
+      border: 1px solid rgb(192, 192, 192);
+    }
+    .ace-codingame-work .ace_meta.ace_tag {
+      color:rgb(25, 118, 116);
+    }
+    .ace-codingame-work .ace_invisible {
+      color: #ddd;
+    }
+    .ace-codingame-work .ace_entity.ace_other.ace_attribute-name {
+      color:rgb(127, 0, 127);
+    }
+    .ace-codingame-work .ace_marker-layer .ace_step {
+      background: rgb(255, 255, 0);
+    }
+    .ace-codingame-work .ace_active-line {
+      background: rgb(232, 242, 254);
+    }
+    .ace-codingame-work .ace_gutter-active-line {
+      background-color : #DADADA;
+    }
+    .ace-codingame-work .ace_marker-layer .ace_selected-word {
+      border: 1px solid rgb(181, 213, 255);
+    }
+    .ace-codingame-work .ace_indent-guide {
+      background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==') right repeat-y;
+    }
+    .ace_editor.ace_autocomplete {
+      width: 350px !important;
+    }
+  
+/*# sourceURL=ace/css/ace-codingame-work */</style><script charset="utf-8" src="IDE%20CodinGame_fichiers/0.js"></script><script charset="utf-8" src="IDE%20CodinGame_fichiers/280.js"></script><script charset="utf-8" src="IDE%20CodinGame_fichiers/171.js"></script></head><body class=""><noscript><div class="Home-container"><div class="Home-tileContainer"><div class="Home-header"><div class="Home-logo"></div><div class="Tile-tile"><div class="Description-title"><img class="Description-icon" src="Canceled_32.svg" alt=""> <span>Error: JavaScript is disabled.</span></div><div class="Description-description">Your web browser must have JavaScript enabled for this application to work correctly.</div></div></div></div></div></noscript><div id="root"><div class="c0151"><div><div class="c0155 c0155-enter-done"><div class="SplitPane  vertical " style="display: flex; flex: 1 1 0%; height: 100%; position: absolute; outline: currentcolor none medium; overflow: hidden; -moz-user-select: text; flex-direction: row; left: 0px; right: 0px;"><div class="Pane vertical Pane1  " style="flex: 0 0 auto; position: relative; outline: currentcolor none medium; width: calc(50% - 5px);"><div class="SplitPane  horizontal " style="display: flex; flex: 1 1 0%; height: 100%; position: absolute; outline: currentcolor none medium; overflow: hidden; -moz-user-select: text; bottom: 0px; flex-direction: column; min-height: 100%; top: 0px; width: 100%;"><div class="Pane horizontal Pane1  " style="flex: 0 0 auto; position: relative; outline: currentcolor none medium; height: 65%; display: flex;"><div class="c0159"><div class="c0160"><div><div class="c0165"><div class="c0166"><img class="c0167" src="IDE%20CodinGame_fichiers/Question_24.svg" alt=""><span class="c0168">Question 19 / 56 - Java</span></div><div class="c0164"><div class="c0169"><span class="isvg loaded c0170"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <metadata><!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d___wf1G1P2z"?-->
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:description rdf:about=""></rdf:description>
+   </rdf:rdf>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<!--?xpacket end="w"?--></metadata>
+<defs>
+    <style>
+      .cls-timer {
+        fill: #f2bb13;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Timer_24___wf1G1P2z" class="cls-timer" d="M3834,672a12.012,12.012,0,0,1-12-12,10.648,10.648,0,0,1,1.59-5.49,1,1,0,0,1,1.75.98A8.617,8.617,0,0,0,3824,660a10,10,0,1,0,11-9.949V652a1,1,0,0,1-2,0v-3a1,1,0,0,1,1-1A12,12,0,0,1,3834,672Zm0-14a2,2,0,1,1-2,2v-0.043l-3.52-2.1a1,1,0,0,1,1.03-1.718l3.54,2.11A1.949,1.949,0,0,1,3834,658Z" transform="translate(-3822 -648)"></path>
+</svg>
+</span><span class="c0172"><span><span>08:32</span>/<span>10:00</span></span><img class="c0174" src="IDE%20CodinGame_fichiers/Arrow_8.svg" alt=""></span></div></div></div></div></div><div class="c0161"><div class="c0176"><div><code>Calculator.sum(String... numbers)</code> retourne la somme des nombres appartenant au tableau <code>numbers</code>.<br>
+<br>
+<code>numbers</code> contient toujours des nombres flottants valides exprimés sous la forme de chaine de caractères.<br>
+<br>
+L'implémentation actuelle retourne parfois un résultat inexact, par exemple <code>Calculator.sum("99.35", "1.10")</code> retourne 100.44999999999999.<br>
+<br>
+Modifiez la méthode <code>Calculator.sum(String... numbers)</code> afin qu'elle retourne toujours la somme exacte.</div></div></div></div></div><span class="Resizer horizontal " style="min-height: 10px; cursor: row-resize;"></span><div class="Pane horizontal Pane2  " style="flex: 1 1 0%; position: relative; outline: currentcolor none medium;"><div class="c0178" style="flex-direction: column;"><div class="c0179"><span class="c0181"></span></div><div class="c0183"><div class="c0159"><div class="c0160"><div class="c0165"><div class="c0166"><img class="c0167" src="IDE%20CodinGame_fichiers/Output_24.svg" alt=""><span class="c0168">Sortie console</span></div></div></div><div class="c0161"><div class="c01122"><pre class="c01123 c01124">error: cannot find symbol
+
+			total = roud( total + Double.parseDouble(number));
+			        ^</pre></div></div></div></div></div></div></div></div><span class="Resizer vertical " style="min-width: 10px; cursor: col-resize;"></span><div class="Pane vertical Pane2  " style="flex: 1 1 0%; position: relative; outline: currentcolor none medium;"><div class="c0178"><div class="c0180"><span class="c0182"></span></div><div class="c0183"><div class="c01117"><div class="c01118"><div class="SplitPane  horizontal " style="display: flex; flex: 1 1 0%; height: 100%; position: absolute; outline: currentcolor none medium; overflow: hidden; -moz-user-select: text; bottom: 0px; flex-direction: column; min-height: 100%; top: 0px; width: 100%;"><div class="Pane horizontal Pane1  " style="flex: 0 0 auto; position: relative; outline: currentcolor none medium; height: calc(65% + 39px); display: flex;"><div class="c0159"><div class="c0160"><div class="c0165"><div class="c0166"><img class="c0167" src="IDE%20CodinGame_fichiers/Code_24.svg" alt=""><span class="c0168">Réponse</span></div><div class="c01125"><button title="Restaurer le code par défaut" class="c01127"><span class="isvg loaded c01128"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">
+  <metadata><!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d___jlffyaiZ"?-->
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:description rdf:about=""></rdf:description>
+   </rdf:rdf>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<!--?xpacket end="w"?--></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #f2bb13;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Reset_24___jlffyaiZ" class="cls-1" d="M4893,661a9,9,0,1,1-18,0,8.92,8.92,0,0,1,2.8-6.532,1,1,0,0,1,1.38,1.451A6.932,6.932,0,0,0,4877,661a7,7,0,1,0,8.04-6.9l0.66,1.188a1,1,0,0,1-1.41,1.416l-1.9-2.856a1,1,0,0,1-.39-0.668c0-.039.01-0.073,0.01-0.111s-0.01-.05-0.01-0.075a0.971,0.971,0,0,1,.03-0.168,0.131,0.131,0,0,0,.01-0.061,0.936,0.936,0,0,1,.25-0.479l3-3a1,1,0,1,1,1.41,1.415l-1.39,1.4A9.013,9.013,0,0,1,4893,661Z" transform="translate(-4875 -649)"></path>
+</svg>
+</span></button></div></div></div><div class="c0161"><div class="c01126"><div id="answer-editor" style="width: 100%; height: 100%; font-size: 14px;" class=" ace_editor ace-codingame-work ace_focus ace_selecting" draggable="false"><textarea class="ace_text-input" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; height: 14.6667px; width: 7px; left: 269px; top: 200.667px;" wrap="off">  </textarea><div class="ace_gutter" aria-hidden="true"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 10px; height: 367.333px; width: 47px;"><div class="ace_gutter-cell " style="height: 14.6667px;">1</div><div class="ace_gutter-cell " style="height: 14.6667px;">2</div><div class="ace_gutter-cell " style="height: 14.6667px;">3<span class="ace_fold-widget ace_start ace_open" style="height: 14.6667px;"></span></div><div class="ace_gutter-cell " style="height: 14.6667px;">4</div><div class="ace_gutter-cell " style="height: 14.6667px;">5<span class="ace_fold-widget ace_start ace_open" style="height: 14.6667px;"></span></div><div class="ace_gutter-cell " style="height: 14.6667px;">6</div><div class="ace_gutter-cell " style="height: 14.6667px;">7</div><div class="ace_gutter-cell " style="height: 14.6667px;">8</div><div class="ace_gutter-cell " style="height: 14.6667px;">9</div><div class="ace_gutter-cell " style="height: 14.6667px;">10<span class="ace_fold-widget ace_start ace_open" style="height: 14.6667px;"></span></div><div class="ace_gutter-cell " style="height: 14.6667px;">11</div><div class="ace_gutter-cell " style="height: 14.6667px;">12</div><div class="ace_gutter-cell " style="height: 14.6667px;">13<span class="ace_fold-widget ace_start ace_open" style="height: 14.6667px;"></span></div><div class="ace_gutter-cell " style="height: 14.6667px;">14</div><div class="ace_gutter-cell " style="height: 14.6667px;">15</div><div class="ace_gutter-cell " style="height: 14.6667px;">16</div><div class="ace_gutter-cell " style="height: 14.6667px;">17</div><div class="ace_gutter-cell " style="height: 14.6667px;">18</div><div class="ace_gutter-cell " style="height: 14.6667px;">19</div><div class="ace_gutter-cell " style="height: 14.6667px;">20</div></div><div class="ace_gutter-active-line" style="top: 200.667px; height: 14.6667px;"></div></div><div class="ace_scroller" style="left: 48px; right: 0px; bottom: 0px;"><div class="ace_content" style="margin-top: 10px; width: 547px; height: 367.333px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 564px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_selection ace_br1 ace_start" style="height:14.666671752929688px;right:0;top:220.0000762939453px;left:4px;"></div><div class="ace_selection ace_br12" style="height:14.666671752929688px;width:7px;top:278.66676330566406px;left:4px;"></div><div class="ace_selection" style="height:44.00001525878906px;right:0;top:234.666748046875px;left:4px;"></div><div class="ace_bracket ace_start ace_br15" style="height:14.666671752929688px;width:7px;top:29.333343505859375px;left:123px;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:14.666671752929688px"><span class="ace_keyword">import</span> <span class="ace_identifier">java</span>.<span class="ace_identifier">math</span>.<span class="ace_keyword ace_operator">*</span>;</div><div class="ace_line" style="height:14.666671752929688px"></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_keyword">class</span> <span class="ace_identifier">Calculator</span> {</div><div class="ace_line" style="height:14.666671752929688px"></div><div class="ace_line" style="height:14.666671752929688px">    <span class="ace_comment ace_doc">/**</span></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span><span class="ace_comment ace_doc"> * Sums an array of numbers.</span></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span><span class="ace_comment ace_doc"> *</span></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span><span class="ace_comment ace_doc"> * </span><span class="ace_comment ace_doc ace_tag">@return</span><span class="ace_comment ace_doc"> the exact sum of the given numbers</span></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span><span class="ace_comment ace_doc"> */</span></div><div class="ace_line" style="height:14.666671752929688px">    <span class="ace_keyword">static</span> <span class="ace_support ace_function">String</span> <span class="ace_identifier">sum</span>(<span class="ace_support ace_function">String</span>... <span class="ace_identifier">numbers</span>) {</div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span>    <span class="ace_keyword">double</span> <span class="ace_identifier">total</span> <span class="ace_keyword ace_operator">=</span> <span class="ace_constant ace_numeric">0</span>;</div><div class="ace_line" style="height:14.666671752929688px"></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span>    <span class="ace_keyword">for</span> (<span class="ace_support ace_function">String</span> <span class="ace_identifier">number</span> : <span class="ace_identifier">numbers</span>) {</div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span><span class="ace_indent-guide">    </span>    <span class="ace_identifier">total</span> <span class="ace_keyword ace_operator">=</span> <span class="ace_support ace_function">Math</span>.<span class="ace_identifier">round</span>( <span class="ace_identifier">total</span> <span class="ace_keyword ace_operator">+</span> <span class="ace_support ace_function">Double</span>.<span class="ace_identifier">parseDouble</span>(<span class="ace_identifier">number</span>));</div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span>    }</div><div class="ace_line" style="height:14.666671752929688px"></div><div class="ace_line" style="height:14.666671752929688px"><span class="ace_indent-guide">    </span>    <span class="ace_keyword">return</span> <span class="ace_support ace_function">String</span>.<span class="ace_identifier">valueOf</span>(<span class="ace_identifier">total</span>);</div><div class="ace_line" style="height:14.666671752929688px">    }</div><div class="ace_line" style="height:14.666671752929688px">    </div><div class="ace_line" style="height:14.666671752929688px">}</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer"><div class="ace_cursor" style="left: 221px; top: 190.667px; width: 7px; height: 14.6667px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 313.333px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 48px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 547px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-optical-sizing: inherit; font-language-override: inherit; font-feature-settings: inherit; font-variation-settings: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div><div class="ace_tooltip" style="display: none; left: 674px; top: 280px;">error: cannot find symbol
+
+			total = roud( total + Double.parseDouble(number));
+			        ^</div></div></div></div></div></div><span class="Resizer horizontal " style="min-height: 10px; cursor: row-resize;"></span><div class="Pane horizontal Pane2  " style="flex: 1 1 0%; position: relative; outline: currentcolor none medium;"><div class="c0178" style="flex-direction: column;"><div class="c0179"><span class="c0181"></span></div><div class="c0183"><div class="c0159"><div class="c0160"><div class="c0165"><div class="c0166"><img class="c0167" src="IDE%20CodinGame_fichiers/Test_24.svg" alt=""><span class="c0168">Code de test</span></div><button title="Restaurer le code de test par défaut" disabled="disabled" class="c01127"><span class="isvg loaded c01128"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21">
+  <metadata><!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d___aEyan2iO"?-->
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:description rdf:about=""></rdf:description>
+   </rdf:rdf>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<!--?xpacket end="w"?--></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #f2bb13;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Reset_24___aEyan2iO" class="cls-1" d="M4893,661a9,9,0,1,1-18,0,8.92,8.92,0,0,1,2.8-6.532,1,1,0,0,1,1.38,1.451A6.932,6.932,0,0,0,4877,661a7,7,0,1,0,8.04-6.9l0.66,1.188a1,1,0,0,1-1.41,1.416l-1.9-2.856a1,1,0,0,1-.39-0.668c0-.039.01-0.073,0.01-0.111s-0.01-.05-0.01-0.075a0.971,0.971,0,0,1,.03-0.168,0.131,0.131,0,0,0,.01-0.061,0.936,0.936,0,0,1,.25-0.479l3-3a1,1,0,1,1,1.41,1.415l-1.39,1.4A9.013,9.013,0,0,1,4893,661Z" transform="translate(-4875 -649)"></path>
+</svg>
+</span></button></div></div><div class="c0161"><div class="c01130"><div id="test-editor" style="width: 100%; height: 100%; font-size: 14px;" class=" ace_editor ace-codingame-work"><textarea class="ace_text-input" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; height: 14.6667px; width: 7px; left: 409px; top: 10px;" wrap="off">  </textarea><div class="ace_gutter" aria-hidden="true"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 10px; height: 117.333px; width: 40px;"><div class="ace_gutter-cell " style="height: 14.6667px;">1</div></div><div class="ace_gutter-active-line" style="top: 10px; height: 14.6667px;"></div></div><div class="ace_scroller" style="left: 41px; right: 0px; bottom: 0px;"><div class="ace_content" style="margin-top: 10px; width: 554px; height: 117.333px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 564px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:14.666671752929688px;top:0px;left:0;right:0;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:14.666671752929688px"><span class="ace_support ace_function">System</span>.<span class="ace_identifier">out</span>.<span class="ace_identifier">println</span>(<span class="ace_identifier">Calculator</span>.<span class="ace_identifier">sum</span>(<span class="ace_string">"99.35"</span>, <span class="ace_string">"1.10"</span>));</div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="left: 368px; top: 0px; width: 7px; height: 14.6667px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 34.6667px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 41px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 554px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-optical-sizing: inherit; font-language-override: inherit; font-feature-settings: inherit; font-variation-settings: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></div></div></div></div></div></div></div></div><div class="c01119"><button class="c01131 c01121"><img class="c01133" src="IDE%20CodinGame_fichiers/Play_24.svg" alt=""><span class="c01134">Tester votre code</span></button><button class="c01135 c01120"><span class="isvg loaded"><svg xmlns="http://www.w3.org/2000/svg" width="23.81" height="24" viewBox="0 0 23.81 24">
+  <metadata><!--?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d___SD2nudR5"?-->
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:description rdf:about=""></rdf:description>
+   </rdf:rdf>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<!--?xpacket end="w"?--></metadata>
+<defs>
+    <style>
+      .cls-1 {
+        fill: #7e8082;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Info_24___SD2nudR5" class="cls-1" d="M4506.49,1508.48a11.866,11.866,0,0,1-16.87,0,12.066,12.066,0,0,1,0-16.97,11.89,11.89,0,0,1,16.87,0A12.059,12.059,0,0,1,4506.49,1508.48Zm-1.41-15.55a9.887,9.887,0,0,0-14.05,0,10.043,10.043,0,0,0,0,14.14,9.887,9.887,0,0,0,14.05,0A10.043,10.043,0,0,0,4505.08,1492.93Zm-5.04,14.07h-3.97a1,1,0,0,1,0-2h0.99v-4h-0.99a1,1,0,0,1,0-2h1.98a1,1,0,0,1,1,1v5h0.99A1,1,0,0,1,4500.04,1507Zm-1.99-10a2,2,0,1,1,1.99-2A2,2,0,0,1,4498.05,1497Z" transform="translate(-4486.16 -1488)"></path>
+</svg>
+</span></button><button class="c0188 c0189"><span class="c0192"><span class="c0194">Question suivante</span></span><img class="c0191" src="IDE%20CodinGame_fichiers/Next_24.svg" alt=""></button></div></div></div></div></div></div></div></div></div></div><script>!function(n){function e(e){for(var a,f,c=e[0],d=e[1],b=e[2],t=0,r=[];t<c.length;t++)f=c[t],u[f]&&r.push(u[f][0]),u[f]=0;for(a in d)Object.prototype.hasOwnProperty.call(d,a)&&(n[a]=d[a]);for(p&&p(e);r.length;)r.shift()();return i.push.apply(i,b||[]),o()}function o(){for(var e,a=0;a<i.length;a++){for(var f=i[a],c=!0,d=1;d<f.length;d++){var b=f[d];0!==u[b]&&(c=!1)}c&&(i.splice(a--,1),e=l(l.s=f[0]))}return e}var f={},u={310:0},i=[];function l(e){if(f[e])return f[e].exports;var a=f[e]={i:e,l:!1,exports:{}};return n[e].call(a.exports,a,a.exports,l),a.l=!0,a.exports}l.e=function(b){var e=[],f=u[b];if(0!==f)if(f)e.push(f[2]);else{var a=new Promise(function(e,a){f=u[b]=[e,a]});e.push(f[2]=a);var c,d=document.getElementsByTagName("head")[0],t=document.createElement("script");t.charset="utf-8",t.timeout=120,l.nc&&t.setAttribute("nonce",l.nc),t.src=l.p+"static/js/"+({}[b]||b)+"."+{0:"7294e216",1:"202575fd",2:"ff351705",3:"1ea361ac",4:"ecce1b5e",5:"d8ef645e",6:"458e80a7",7:"1c4d3e57",8:"b57a016b",9:"ae86c50e",10:"e14d67ba",11:"c31830cf",12:"7b16fdb4",13:"f5c630f9",14:"e7b5cfae",15:"dd33cc62",16:"36e99e2e",17:"ddeb444f",18:"0dba32df",19:"a805727f",20:"00a79588",21:"a47c423e",22:"ccbd9c51",23:"fc7d2e87",24:"b815838d",25:"76591b2e",26:"575cf213",27:"5215352d",28:"4dd4221b",29:"d4f92d46",30:"03a49f26",31:"99260166",32:"166cfa06",33:"4cb17798",34:"da802748",35:"dd37b75c",36:"e85d90f0",37:"24a82210",38:"6d4ff017",39:"c8007cd3",40:"9ba582ac",41:"6d5b6a55",42:"b53a7b9f",43:"adde7ba4",44:"ca70eab1",45:"4e796658",46:"330d5653",47:"47e8dd20",48:"5b2c8ef6",49:"0500a022",50:"e1337d15",51:"d0ba2e84",52:"ea9a6ec0",53:"8ed955df",54:"eaa43da8",55:"971e9dbb",56:"a88bef06",57:"712f71e9",58:"c2ca1aa6",59:"ec66f788",60:"3b2c9479",61:"4d392410",62:"f57e8a7c",63:"1aec64c5",64:"3667a572",65:"193eadc6",66:"edda96fd",67:"7227541d",68:"bd6f7bff",69:"31073fc1",70:"f1afba52",71:"08b967ab",72:"b34426a0",73:"f66e9367",74:"1bdbed90",75:"f3e2a03a",76:"89f0d60b",77:"4cf4440f",78:"f1dcbe4b",79:"a3050553",80:"7348c05f",81:"615796dd",82:"5d632124",83:"681d7969",84:"7851514f",85:"ce34cf58",86:"5604587c",87:"643d1a90",88:"8de7c0d8",89:"a1716f16",90:"f9131ffd",91:"7c1c3ade",92:"499f4fba",93:"73806cca",94:"f2343fa8",95:"f5bba2a2",96:"79a98959",97:"02d47589",98:"6f4bb054",99:"698a8525",100:"b5e85058",101:"8ad37b6d",102:"8d915575",103:"c0b81e3b",104:"07f061c0",105:"77847e23",106:"e090deb5",107:"ac04898b",108:"d3c29c85",109:"a4a66762",110:"e773c66c",111:"330a1a1f",112:"286bfdfc",113:"785956f6",114:"a2991e48",115:"34191daa",116:"62a55143",117:"bcf613b9",118:"cba32d88",119:"384fe9a5",120:"8ef20f45",121:"6f988a0a",122:"ae57966e",123:"52be5dd3",124:"4f3f5230",125:"9a86eb56",126:"c52e5d40",127:"f6b6ef6c",128:"c43031d6",129:"04580dd4",130:"eb30ff60",131:"4e697e71",132:"5ca3e8b0",133:"172c404c",134:"eede15d1",135:"4bca5f5f",136:"e54bd520",137:"bce3f8f0",138:"b2aec834",139:"409e7eb5",140:"2c270f1f",141:"a91098eb",142:"c90ef0ba",143:"82e00e5a",144:"45efbed2",145:"70052aa4",146:"c5502ebd",147:"cf9e1924",148:"3ee162fd",149:"4f288896",150:"f0622169",151:"50da4a97",152:"862d6862",153:"1baab0c7",154:"3f65ea45",155:"3964533e",156:"038f0ad9",157:"b59a9001",158:"594623ce",159:"868a5d20",160:"9e184595",161:"693496df",162:"9c82a2ef",163:"058a00de",164:"bd89fb07",165:"056ba9dd",166:"b2393345",167:"22a5a5d5",168:"f31588ae",169:"9e541ff2",170:"972d42ff",171:"3dd7804f",172:"64521e68",173:"9d79529a",174:"2e1ca897",175:"56009226",176:"bcfceb2e",177:"cd156c9c",178:"a26685e7",179:"456e4f55",180:"31a88455",181:"233a973f",182:"b1ffc097",183:"5563a4f6",184:"2c899704",185:"78af3da7",186:"79af9d33",187:"ec42f70c",188:"b3b1e2a0",189:"a0cdebe1",190:"5f5b73fb",191:"5afd262f",192:"a1f02fce",193:"8b59241a",194:"8a8ad933",195:"732801f9",196:"ef297477",197:"9607507b",198:"7c0ed931",199:"627266d0",200:"925dfc64",201:"46c43e39",202:"aba83e94",203:"6eba7b81",204:"febaaccb",205:"a274c74b",206:"a07e7e48",207:"3e2cd3d2",208:"b0656ace",209:"4afa68ae",210:"def9d6c2",211:"b009ce5b",212:"096647de",213:"4b54af9f",214:"038da546",215:"749bb1b8",216:"c5cec26c",217:"38f04db1",218:"330f264f",219:"f2324d3c",220:"9408eb04",221:"18ae6437",222:"c8675dce",223:"fa0a6848",224:"a9025eeb",225:"bce1f557",226:"44534354",227:"b8c2bffc",228:"2fec8fe0",229:"e2126a9a",230:"a08ed662",231:"419fed8e",232:"c096078f",233:"2acbf13d",234:"e847dd58",235:"082c7a41",236:"0e0d3323",237:"82046d0d",238:"e6be721b",239:"76a67eb0",240:"90329e33",241:"c2037318",242:"5282ac3c",243:"af5d3c66",244:"e963ccb7",245:"c9bb0e52",246:"678eab9b",247:"788e3c7b",248:"7bb80105",249:"22f0533b",250:"da01ed9f",251:"3764cdde",252:"c4695908",253:"6fdb18de",254:"0fcff354",255:"a375d41f",256:"a779445e",257:"9020bfd5",258:"4e7b576e",259:"d34b7f53",260:"e7e71481",261:"cd723265",262:"f00bd3ef",263:"eacff5df",264:"96419f4f",265:"c6c5a69c",266:"cac514a5",267:"f7c8057b",268:"140f8325",269:"d84c4c62",270:"b1437895",271:"eed2a56f",272:"683e112b",273:"43f8ece5",274:"6d132166",275:"3b0c9db6",276:"9d7856ee",277:"5a2e5087",278:"67a02437",279:"5b04a1b8",280:"6b812821",281:"4524cb0c",282:"6b3e80f1",283:"87f65890",284:"a6195348",285:"2c9f043c",286:"dae616c2",287:"1d4ca040",288:"3acedb10",289:"8f367a5e",290:"dd9053ad",291:"053c82ff",292:"b72d770c",293:"d48cfa8c",294:"9db2d4ab",295:"9c8e23cb",296:"f577f2fd",297:"ef3a8700",298:"8799b025",299:"ed6ccd4e",300:"3fe3314a",301:"2f1cbd35",302:"ef66942f",303:"6778aed1",304:"9e857a5b",305:"8cd17a98",307:"af920780",309:"f2e24791"}[b]+".chunk.js",c=function(e){t.onerror=t.onload=null,clearTimeout(r);var a=u[b];if(0!==a){if(a){var f=e&&("load"===e.type?"missing":e.type),c=e&&e.target&&e.target.src,d=new Error("Loading chunk "+b+" failed.\n("+f+": "+c+")");d.type=f,d.request=c,a[1](d)}u[b]=void 0}};var r=setTimeout(function(){c({type:"timeout",target:t})},12e4);t.onerror=t.onload=c,d.appendChild(t)}return Promise.all(e)},l.m=n,l.c=f,l.d=function(e,a,f){l.o(e,a)||Object.defineProperty(e,a,{enumerable:!0,get:f})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(a,e){if(1&e&&(a=l(a)),8&e)return a;if(4&e&&"object"==typeof a&&a&&a.__esModule)return a;var f=Object.create(null);if(l.r(f),Object.defineProperty(f,"default",{enumerable:!0,value:a}),2&e&&"string"!=typeof a)for(var c in a)l.d(f,c,function(e){return a[e]}.bind(null,c));return f},l.n=function(e){var a=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(a,"a",a),a},l.o=function(e,a){return Object.prototype.hasOwnProperty.call(e,a)},l.p="/evaluate/",l.oe=function(e){throw console.error(e),e};var a=window.webpackJsonp=window.webpackJsonp||[],c=a.push.bind(a);a.push=e,a=a.slice();for(var d=0;d<a.length;d++)e(a[d]);var p=c;o()}([])</script><script src="IDE%20CodinGame_fichiers/308.js"></script><script src="IDE%20CodinGame_fichiers/main.js"></script><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class="ReactModalPortal"></div><div class=" ace_editor ace-tm ace_autocomplete" style="top: 266.333px; height: 67.2px; left: 847px; display: none;"><textarea class="ace_text-input" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0;" wrap="off">  </textarea><div class="ace_gutter" aria-hidden="true" style="display: none;"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px;"></div><div class="ace_gutter-active-line" style="display: none;"></div></div><div class="ace_scroller" style="left: 0px; right: 0px; bottom: 0px;"><div class="ace_content" style="cursor: default; margin-top: 0px; width: 349px; height: 100.8px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 532px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_highlight-marker" style="height:16.800003051757812px;width:6.6px;top:0px;left:4px;"></div><div class="ace_highlight-marker" style="height:16.800003051757812px;width:6.6px;top:16.800003051757812px;left:4px;"></div><div class="ace_highlight-marker" style="height:16.800003051757812px;width:6.6px;top:33.600006103515625px;left:4px;"></div><div class="ace_highlight-marker" style="height:16.800003051757812px;width:6.6px;top:50.40000915527344px;left:4px;"></div><div class="ace_active-line" style="height:16.800003051757812px;top:33.600006103515625px;left:0;right:0;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:16.800003051757812px"><span class="ace_">random() : double - Math</span><span class="ace_rightAlignedText">function</span></div><div class="ace_line" style="height:16.800003051757812px"><span class="ace_">rint(double a) : double - Math</span><span class="ace_rightAlignedText">function</span></div><div class="ace_line ace_selected" style="height:16.800003051757812px"><span class="ace_">round(double a) : long - Math</span><span class="ace_rightAlignedText">function</span></div><div class="ace_line" style="height:16.800003051757812px"><span class="ace_">round(float a) : int - Math</span><span class="ace_rightAlignedText">function</span></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors" style="opacity: 0;"><div class="ace_cursor" style="left: 4px; top: 33.6px; width: 6.6px; height: 16.8px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="width: 22px; bottom: 0px; display: none;"><div class="ace_scrollbar-inner" style="width: 22px; height: 67.2px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 0px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 332px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-optical-sizing: inherit; font-language-override: inherit; font-feature-settings: inherit; font-variation-settings: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></div></body></html>
