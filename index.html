@@ -1,57 +1,120 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>🏫 Index des TP</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Météo</title>
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>🏫 Page d'index des TP 🎒</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello ☀️️</p>
-        <img src="galilee.png" alt="Logo Galilee"/>
-      
-      <ul>
-        <li>
-          <a href="tp1/index.html">/TP1</a>
-        </li>
-        <li>
-          <a href="tp2/index.html">/TP2</a>
-        </li>
-        <li>
-          <a href="tp3/index.html">/TP3</a>
-        </li>
-        <li>
-          <a href="tp4/index.html">/TP4</a>
-        </li>
-        <li>
-          <a href="tp5/index.html">/TP5</a>
-        </li>
-        <li>
-          <a href="tp6/index.html">/TP6</a>
-        </li>
-        <li>
-          <a href="tp7/index.html">/TP7</a>
-        </li>
-      </ul>
-    </body>
+    <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
+    <!--<link rel="stylesheet" href="style.css">-->
+  <link rel="stylesheet" href="css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/main.js"></script>
+    <script src="js/libs/vue.js"></script>
+     <style>
+         body{
+             width: 45%;
+         padding-top:30px;
+             margin:auto;
+       
+         }
+     </style>
+
+</head>
+
+<body>
+    <div id="weatherApp" class="container">
+        <h1>WebApp Météo avec Vuejs</h1>
+        <!-- formulaire de saisie de ville -->
+        <form v-on:submit="addCity">
+            <div class="form-row">
+                <div class="form-group col-11">
+                    <div class="input-group">
+                        <input type="search" class="form-control" v-model="formCityName" placeholder="Search for..."
+                            aria-label="Search for..." autofocus required>
+                    </div>
+                </div>
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">Go!</button>
+                </span>
+            </div>
+
+            <!-- ici votre code HTML utilisé par VUE -->
+            {{ loaded}}
+            {{ formCityName}}
+            {{ message}}
+            {{messageForm}}
+            {{name}}
+
+
+            <!-- affichage de nombre de caractères saisie -->
+            <small class="text-muted">
+                {{formCityName.length}} car.
+            </small>
+
+           
+        </form>
+        <div class="alert alert-danger" role="alert" v-if='messageForm != ""'>
+            {{messageForm}}
+        </div>
+        <h4>Liste des villes ({{cityList.length}})</h4>
+        <ul class="list-group">
+            <a v-for="city in cityList" v-on:click="meteo(city)" class="list-group-item d-flex justify-content-between align-items-center">
+                {{city.name}}
+                <button v-on:click="remove(city)" class="btn btn-secondary btn-sm" title="Supprimer de la liste">&times;</button>
+            </a>
+        </ul>
+
+        <div class="alert alert-primary" role="alert" v-if="cityList.length==0">
+            Aucune ville de saisie!
+        </div>
+
+           
+        <!-- fin: formulaire de saisie de ville -->
+        <!-- meteo de la ville selectionnée -->
+<div v-if="cityWeatherLoading"> Chargement de la météo...</div>
+
+<div v-if="cityWeather">
+
+    <div class="card" style="width: 18rem;" v-if="cityWeather">
+        <div class="card-header">
+            {{cityWeather.name}} 
+        </div>
+        <img class="card-img-top" v-bind:src="'https://maps.googleapis.com/maps/api/staticmap?markers='+cityWeather.coord.lat+','+cityWeather.coord.lon+'&zoom=10&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg'" alt="Card image cap">
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <i v-bind:class="'wi wi-owm-day-'+cityWeather.weather[0].id"></i>
+                {{cityWeather.main.temp}}<i class="wi wi-celsius"></i>                            
+            </h5>
+            <p class="card-text">{{cityWeather.weather[0].description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="wi wi-cloud"></i> Nuage: {{cityWeather.clouds.all}}%                            
+            </li>
+            <li class="list-group-item">
+                <i class="wi wi-humidity"></i> Humidité: {{cityWeather.main.humidity}}%                           
+            </li>
+            <li class="list-group-item">
+                <i class="wi wi-windy"></i> Vent: {{cityWeather.wind.speed}} km/h
+            </li>
+            <li class="list-group-item">
+                <i class="wi wi-sunrise"></i> 
+                Levé du soleil: 
+                {{new Date(cityWeather.sys.sunrise * 1000).toTimeString()}}
+            </li>
+            <li class="list-group-item">
+                <i class="wi wi-sunset"></i>
+                Couché du soleil: 
+                {{new Date(cityWeather.sys.sunset * 1000).toTimeString()}}
+            </li>
+        </ul>        
+    </div>
+</div>
+    </div>
+
+</body>
+
 </html>
